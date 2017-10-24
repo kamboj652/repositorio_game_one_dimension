@@ -1,0 +1,3 @@
+INDEX VERSION 1.130+C:\Users\Skynet\Desktop\1D\Nueva carpeta\AZONE_DIMENSION\.metadata\.plugins\org.eclipse.jdt.core
+707003643.index
+2447681219.index

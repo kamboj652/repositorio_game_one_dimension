@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">ONE DIMENSION</string>
+    <string name="menu_play">JUGAR</string>
+    <string name="repetir">REPETIR</string>
+    <string name="aceptar">ACEPTAR</string>
+    
+   
+    <string name="menu_exit">Salir</string>
+    
+</resources>

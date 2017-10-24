@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fount"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <ImageView
+        android:id="@+id/titulo_juego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dip"
+        android:layout_marginTop="20dip"
+        android:gravity="top"
+        android:src="@drawable/onedimension" />
+
+    <TextView
+        android:id="@+id/play_button"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dip"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:text="@string/menu_play"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/quit_button"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dip"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:text="SALIR"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/azzul"
+        android:layout_width="511dp"
+        android:layout_height="94dp"
+        android:layout_marginBottom="50dip"
+        android:layout_marginTop="20dip"
+        android:gravity="center"
+        android:src="@drawable/azzvl" />
+
+</LinearLayout>

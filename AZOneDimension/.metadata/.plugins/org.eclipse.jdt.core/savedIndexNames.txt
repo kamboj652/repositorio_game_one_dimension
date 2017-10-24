@@ -1,0 +1,2 @@
+INDEX VERSION 1.126+E:\compartimiento\AZONE_DIMENSION\AZOneDimension\.metadata\.plugins\org.eclipse.jdt.core
+707003643.index
