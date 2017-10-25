@@ -1,6 +1,7 @@
 package com.gameonedimension.myapplication.dimensions;
 
 
+import com.gameonedimension.myapplication.R;
 import com.gameonedimension.myapplication.serviciomusica.MusicaSingleton;
 
 
