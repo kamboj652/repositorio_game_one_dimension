@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 
-public class OneDimensionGameThread implements Runnable {
+public class OneDimensionGameThread extends Thread {
 
 	private SurfaceHolder sh;
 	private LienzoGameView view;

@@ -26,7 +26,7 @@ public class LienzoGameView extends SurfaceView implements SurfaceHolder.Callbac
     //hilo del juego, detiene y reanuda el hilo pieza para pintar la pantalla
   //  private OneDimensionGameThread paintThread;
     //hilo qye mueve la pieza
-    private PiezaMoveThread bolaThread;
+    //private PiezaMoveThread bolaThread;
     private Paint paint = new Paint();
     private Paint paint_2 = new Paint();
     private final int colorBloques;
@@ -37,8 +37,12 @@ public class LienzoGameView extends SurfaceView implements SurfaceHolder.Callbac
 
     Bitmap bmp;
     final Context activoty;
-    private Thread gameThread;
-    private OneDimensionGameThread paintThread;
+   // private Thread gameThread;
+ //   private OneDimensionGameThread paintThread;
+   //hilo del juego, detiene y reanuda el hilo pieza para pintar la pantalla
+   private OneDimensionGameThread paintThread;
+    //hilo qye mueve la pieza
+    private PiezaMoveThread bolaThread;
     //Constructor
     public LienzoGameView(Context context, final int nivel, final int colorBloques) {
 
@@ -110,12 +114,15 @@ public class LienzoGameView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        //objeto que cruzará
+        bola = new Pieza(new Coordenada(0,0),getHeight()/2,getWidth()/2,bmp);
+        //Hilo del juego mierdero
         paintThread = new OneDimensionGameThread(getHolder(), this);
-        gameThread = new Thread(paintThread);
-        bola = new Pieza(new Coordenada(0, 0), getHeight() / 3, getWidth() / 3, bmp);
+        //dentro de el se bloqueara y desbloqueara el hilo usando el getHolder
+        paintThread.setRunning(true);
+        paintThread.start();
 
-        gameThread.start();
-
+        //Hilo de la pelota
         bolaThread = new PiezaMoveThread((Pieza) bola);
         bolaThread.setRunning(true);
         bolaThread.start();
@@ -135,25 +142,28 @@ public class LienzoGameView extends SurfaceView implements SurfaceHolder.Callbac
     @Override
     public void onDraw(Canvas canvas) {
 
+
         //tinta la linea
         paint.setColor(Color.WHITE);
         //tinta los bloques
         paint_2.setColor(colorBloques);
         //pinta el hueco que dejan los objetos
         canvas.drawColor(colorBloques);
-        int ancho = getWidth();
-        int alto = getHeight();
         //linea central
         //canvas.drawRect(184, 0, 185, 350, paint);
-        canvas.drawRect(alto - 5, 0, alto, ancho, paint);
+        canvas.drawRect(379, 0, 381.25f, 550, paint);
+        if (bola.getOrigenX()<=400){
+            //canvas.drawBitmap(bmp, bola.getOrigenX(), 0, paint);
+            canvas.drawBitmap(bmp, bola.getOrigenX(), 30, paint);
+            //1º bloque
+            canvas.drawRect(0, 0, 379, 550, paint_2);
 
-        if (bola.getOrigenX() <= alto) {
+            //2º bloque
+            canvas.drawRect(381.25f, 0,getWidth(),getHeight(), paint_2);
 
-            canvas.drawBitmap(bmp, bola.getOrigenX() / 2, bola.getOrigenY() / 2, paint);
-            canvas.drawRect(0, 0, alto, ancho, paint_2);
-            //2� bloque
-            canvas.drawRect(alto - 5, 0, alto, ancho, paint_2);
-        } else {
+        }
+        else
+        {
 
             surfaceDestroyed(this.getHolder());
             finalizar();

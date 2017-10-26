@@ -7,7 +7,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 
 
+import android.util.Log;
 import android.view.Window;
+
+import java.util.logging.Logger;
 
 public class OneDimensionJuego extends Activity {
 
@@ -25,6 +28,7 @@ public class OneDimensionJuego extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        int i=Thread.activeCount();
         setContentView(new LienzoGameView(this, lvl, color));
     }
 
