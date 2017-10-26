@@ -24,22 +24,21 @@ import com.gameonedimension.myapplication.juego.PiezaMoveThread;
 public class LienzoGameView extends SurfaceView implements SurfaceHolder.Callback {
 
     //hilo del juego, detiene y reanuda el hilo pieza para pintar la pantalla
-    private OneDimensionGameThread paintThread;
+  //  private OneDimensionGameThread paintThread;
     //hilo qye mueve la pieza
     private PiezaMoveThread bolaThread;
-
-    Paint paint = new Paint();
-    Paint paint_2 = new Paint();
-
-    final int colorBloques;
-    final int nivel;
+    private Paint paint = new Paint();
+    private Paint paint_2 = new Paint();
+    private final int colorBloques;
+    private final int nivel;
     //Handler handler;
 
     private ElementoOneDimension bola;
 
     Bitmap bmp;
     final Context activoty;
-
+    private Thread gameThread;
+    private OneDimensionGameThread paintThread;
     //Constructor
     public LienzoGameView(Context context, final int nivel, final int colorBloques) {
 
@@ -111,16 +110,12 @@ public class LienzoGameView extends SurfaceView implements SurfaceHolder.Callbac
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-
-        //objeto que cruzar�
-        bola = new Pieza(new Coordenada(0, 0), getHeight() / 3, getWidth() / 3, bmp);
-        //Hilo del juego mierdero
         paintThread = new OneDimensionGameThread(getHolder(), this);
-        //dentro de el se bloqueara y desbloqueara el hilo usando el getHolder
-        paintThread.setRunning(true);
-        paintThread.start();
+        gameThread = new Thread(paintThread);
+        bola = new Pieza(new Coordenada(0, 0), getHeight() / 3, getWidth() / 3, bmp);
 
-        //Hilo de la pelota
+        gameThread.start();
+
         bolaThread = new PiezaMoveThread((Pieza) bola);
         bolaThread.setRunning(true);
         bolaThread.start();

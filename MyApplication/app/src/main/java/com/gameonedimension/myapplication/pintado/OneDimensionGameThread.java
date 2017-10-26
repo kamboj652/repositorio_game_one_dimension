@@ -4,11 +4,11 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 
-public class OneDimensionGameThread extends Thread {
+public class OneDimensionGameThread implements Runnable {
 
 	private SurfaceHolder sh;
 	private LienzoGameView view;
-	private boolean run;
+	private boolean run = true;
 	
 	public OneDimensionGameThread(SurfaceHolder sh, LienzoGameView view) {
 		this.sh = sh;

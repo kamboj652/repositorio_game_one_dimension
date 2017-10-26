@@ -11,8 +11,7 @@ import android.view.Window;
 
 public class OneDimensionJuego extends Activity {
 
-    int lvl, color;
-    MediaPlayer musica;
+    private int lvl, color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -41,16 +41,16 @@ public class OneDimensionFIN extends Activity {
                         }, 4000
                 );
 
-        final MusicaSingleton musica = MusicaSingleton.getInstance();
+        /*final MusicaSingleton musica = MusicaSingleton.getInstance();
         musica.stopMusic();
         musica.setMusic(R.raw.azodfinal, getApplicationContext());
-        musica.playMusic();
+        musica.playMusic();*/
 
 
         imagen.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                musica.destroyMusic();
+              //  musica.destroyMusic();
                 finish();
             }
         });
